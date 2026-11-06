@@ -1,0 +1,113 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Product category grouping",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "image_url": { "type": "string" },
+        "is_active": { "type": "boolean" },
+        "display_order": { "type": "number" }
+      },
+      "required": ["id", "name", "slug", "is_active"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Spice or dry fruit product with pack size variants",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "category_id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "image_url": { "type": "string" },
+        "is_active": { "type": "boolean" },
+        "is_featured": { "type": "boolean" },
+        "category_name": { "type": "string" },
+        "variants": { "type": "array" }
+      },
+      "required": ["id", "category_id", "name", "is_active", "variants"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Cash on delivery customer order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "order_number": { "type": "string" },
+        "customer_name": { "type": "string" },
+        "customer_phone": { "type": "string" },
+        "customer_email": { "type": "string" },
+        "delivery_address": { "type": "string" },
+        "delivery_locality": { "type": "string" },
+        "delivery_city": { "type": "string" },
+        "delivery_state": { "type": "string" },
+        "delivery_pincode": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "delivery_charge": { "type": "number" },
+        "total_amount": { "type": "number" },
+        "current_status": { "type": "string" },
+        "created_at": { "type": "string" },
+        "items": { "type": "array" },
+        "history": { "type": "array" }
+      },
+      "required": ["id", "order_number", "customer_name", "customer_phone", "delivery_address", "delivery_pincode", "total_amount", "current_status"]
+    },
+    "DeliveryZone": {
+      "title": "DeliveryZone",
+      "description": "Serviceable PIN code and local delivery fees",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "zone_name": { "type": "string" },
+        "pincode": { "type": "string" },
+        "delivery_charge": { "type": "number" },
+        "min_order_amount": { "type": "number" },
+        "free_delivery_above": { "type": "number" },
+        "is_active": { "type": "boolean" }
+      },
+      "required": ["id", "pincode", "zone_name", "delivery_charge", "is_active"]
+    },
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Shop owner configuration and contact details",
+      "type": "object",
+      "properties": {
+        "store_name": { "type": "string" },
+        "store_phone": { "type": "string" },
+        "store_email": { "type": "string" },
+        "store_address": { "type": "string" },
+        "owner_whatsapp_number": { "type": "string" }
+      },
+      "required": ["store_name", "store_phone", "store_address", "owner_whatsapp_number"]
+    }
+  },
+  "firestore": {
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Collection of spice and dry fruit categories"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of products with pack variants and inventory"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer Cash on Delivery orders"
+    },
+    "/delivery_zones/{zoneId}": {
+      "schema": "DeliveryZone",
+      "description": "Serviceable Beldanga local delivery zones"
+    },
+    "/store_settings/{settingId}": {
+      "schema": "StoreSettings",
+      "description": "Store configuration and hotline details"
+    }
+  }
+}

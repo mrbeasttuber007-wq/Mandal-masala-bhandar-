@@ -1,0 +1,6 @@
+{
+  "name": "Mandal Masala Bhandar",
+  "description": "Authentic Indian spices, handcrafted masalas, and premium dry fruits from Beldanga, Murshidabad with local Cash on Delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
